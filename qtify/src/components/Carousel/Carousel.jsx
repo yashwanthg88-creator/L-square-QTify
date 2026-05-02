@@ -25,7 +25,7 @@ function Carousel({ data, renderComponent }) {
         initialSlide={0}
         modules={[Navigation]}
         slidesPerView={"auto"}
-        spaceBetween={40}
+        spaceBetween={20}
         allowTouchMove
       >
         <Controls data={data} />
@@ -34,7 +34,10 @@ function Carousel({ data, renderComponent }) {
           <CarouselRightNavigation />
         </div>
         {data.map((ele, idx) => (
-          <SwiperSlide key={ele.id || ele.slug || idx}>
+          <SwiperSlide
+            key={ele.id || ele.slug || idx}
+            style={{ width: "160px" }}
+          >
             {renderComponent(ele)}
           </SwiperSlide>
         ))}

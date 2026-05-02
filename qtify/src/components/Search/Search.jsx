@@ -5,7 +5,6 @@ import useAutocomplete from "@mui/material/useAutocomplete";
 import { styled } from "@mui/system";
 import { truncate } from "../../helpers/helpers";
 import { useNavigate } from "react-router-dom";
-import { Tooltip } from "@mui/material";
 
 const Listbox = styled("ul")(({ theme }) => ({
   width: "100%",
@@ -39,7 +38,6 @@ const Listbox = styled("ul")(({ theme }) => ({
 function Search({ searchData, placeholder }) {
   const {
     getRootProps,
-    getInputLabelProps,
     value,
     getInputProps,
     getListboxProps,
@@ -54,7 +52,6 @@ function Search({ searchData, placeholder }) {
   const navigate = useNavigate();
   const onSubmit = (e, value) => {
     e.preventDefault();
-    console.log(value);
     navigate(`/album/${value.slug}`);
     //Process form data, call API, set state etc.
   };
@@ -85,7 +82,6 @@ function Search({ searchData, placeholder }) {
       {groupedOptions.length > 0 ? (
         <Listbox {...getListboxProps()}>
           {groupedOptions.map((option, index) => {
-            // console.log(option);
             const artists = option.songs.reduce((accumulator, currentValue) => {
               accumulator.push(...currentValue.artists);
               return accumulator;
@@ -93,6 +89,7 @@ function Search({ searchData, placeholder }) {
 
             return (
               <li
+                key={option.slug || option.title || index}
                 className={styles.listElement}
                 {...getOptionProps({ option, index })}
               >

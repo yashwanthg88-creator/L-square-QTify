@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Hero from "./components/Hero/Hero";
-import HomePage from "./pages/HomePage/HomePage";
 import Navbar from "./components/Navbar/Navbar";
 import { StyledEngineProvider } from "@mui/material/styles";
 import { Outlet } from "react-router-dom";

@@ -1,6 +1,5 @@
 import { CircularProgress } from "@mui/material";
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import Carousel from "../Carousel/Carousel";
 import Filters from "../Filters/Filters";
@@ -18,11 +17,11 @@ export default function Section({ title, data, filterSource, type }) {
   useEffect(() => {
     if (filterSource) {
       filterSource().then((response) => {
-        const { data } = response;
-        setFilters([...filters, ...data]);
+        const { data: filterData } = response;
+        setFilters([{ key: "all", label: "All" }, ...filterData]);
       });
     }
-  }, []);
+  }, [filterSource]);
 
   const showFilters = filters.length > 1; //true
   const cardsToRender = data.filter((card) =>
@@ -30,7 +29,6 @@ export default function Section({ title, data, filterSource, type }) {
       ? card.genre.key === filters[selectedFilterIndex].key
       : card
   );
-  console.log(data);
   return (
     <div>
       <div className={styles.header}>

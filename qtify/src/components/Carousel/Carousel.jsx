@@ -12,7 +12,7 @@ const Controls = ({ data }) => {
 
   useEffect(() => {
     swiper.slideTo(0);
-  }, [data]);
+  }, [data, swiper]);
 
   return <></>;
 };
@@ -33,8 +33,10 @@ function Carousel({ data, renderComponent }) {
           <CarouselLeftNavigation />
           <CarouselRightNavigation />
         </div>
-        {data.map((ele) => (
-          <SwiperSlide>{renderComponent(ele)}</SwiperSlide>
+        {data.map((ele, idx) => (
+          <SwiperSlide key={ele.id || ele.slug || idx}>
+            {renderComponent(ele)}
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>

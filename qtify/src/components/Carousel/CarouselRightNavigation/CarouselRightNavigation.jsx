@@ -22,7 +22,16 @@ export default function CarouselRightNavigation() {
 
   return (
     <div className={styles.rightNavigation}>
-      {!isEnd && <RightArrow onClick={() => swiper.slideNext()} />}
+      {!isEnd && (
+        <button
+          type="button"
+          className={styles.navButton}
+          aria-label="Next"
+          onClick={() => swiper.slideNext()}
+        >
+          <RightArrow />
+        </button>
+      )}
     </div>
   );
 }

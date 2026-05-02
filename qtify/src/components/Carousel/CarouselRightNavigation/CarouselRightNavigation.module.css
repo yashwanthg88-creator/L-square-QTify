@@ -6,3 +6,10 @@
   transform: translateY(-50%);
   z-index: 10;
 }
+
+.navButton {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}

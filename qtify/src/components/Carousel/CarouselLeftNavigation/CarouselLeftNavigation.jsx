@@ -22,7 +22,16 @@ export default function CarouselLeftNavigation() {
 
   return (
     <div className={styles.leftNavigation}>
-      {!isBeginning && <LeftArrow onClick={() => swiper.slidePrev()} />}
+      {!isBeginning && (
+        <button
+          type="button"
+          className={styles.navButton}
+          aria-label="Previous"
+          onClick={() => swiper.slidePrev()}
+        >
+          <LeftArrow />
+        </button>
+      )}
     </div>
   );
 }
